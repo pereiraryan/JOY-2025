@@ -12,7 +12,6 @@
   <!-- Camera & Overlay -->
   <div class="relative w-80 rounded-2xl shadow-xl overflow-hidden">
     <video id="video" class="rounded-2xl w-full" autoplay playsinline></video>
-    <!-- Shrunk and positioned logo -->
     <img id="overlay" src="jubilee-logo.png" class="absolute top-2 right-2 w-20 h-20 opacity-80 pointer-events-none" alt="Logo overlay" />
   </div>
 
@@ -26,79 +25,39 @@
 
   <!-- Form -->
   <form id="souvenirForm" class="flex flex-col gap-3 mt-6">
-  <input name="name" type="text" placeholder="Your Name" required class="p-2 rounded border" />
-  
-  <select name="country" required class="p-2 rounded border">
-    <option value="">Select Your Country</option>
-    <option value="🇮🇳 India">🇮🇳 India</option>
-    <option value="🇮🇹 Italy">🇮🇹 Italy</option>
-    <option value="🇺🇸 USA">🇺🇸 USA</option>
-    <option value="🇵🇭 Philippines">🇵🇭 Philippines</option>
-  </select>
+    <input name="name" type="text" placeholder="Your Name" required class="p-2 rounded border" />
 
-  <input name="social" type="text" placeholder="Instagram or WhatsApp" class="p-2 rounded border" />
+    <select name="country" required class="p-2 rounded border">
+      <option value="">Select Your Country</option>
+      <option value="🇮🇳 India">🇮🇳 India</option>
+      <option value="🇮🇹 Italy">🇮🇹 Italy</option>
+      <option value="🇺🇸 USA">🇺🇸 USA</option>
+      <option value="🇵🇭 Philippines">🇵🇭 Philippines</option>
+    </select>
 
-  <input name="word" type="text" placeholder="A word in your language" required class="p-2 rounded border" />
+    <input name="social" type="text" placeholder="Instagram or WhatsApp" class="p-2 rounded border" />
+    <input name="word" type="text" placeholder="A word in your language" required class="p-2 rounded border" />
 
-  <!-- Hidden input to store base64 selfie -->
-  <input type="hidden" name="photo" id="photoInput" />
+    <!-- Hidden input to store base64 selfie -->
+    <input type="hidden" name="photo" id="photoInput" />
 
-  <button type="submit" class="bg-blue-600 text-white p-2 rounded shadow">Submit Memory</button>
-</form>
-
-<script>
-  const form = document.getElementById('souvenirForm');
-  const photoInput = document.getElementById('photoInput');
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const data = {
-      name: form.name.value,
-      country: form.country.value,
-      social: form.social.value,
-      word: form.word.value,
-      photo: photoInput.value // this comes from your camera
-    };
-
-    try {
-      const response = await fetch('https://script.google.com/macros/s/AKfycbxiRdaG4-vtUcJ_LD8A91HhTlnzl-qpKXCgmafAtHz4Oh_5bLRVk_k6zJguV90-ETLFPA/exec', {
-        method: 'POST',
-       headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({
-    name: name,
-    country: country,
-    social: social,
-    word: word,
-    photo: photo
-  })
-})
-.then(res => res.text())
-.then(data => alert(data))
-.catch(err => alert('Error: ' + err.message));
-
-      const text = await response.text();
-      alert('Submitted: ' + text);
-      form.reset();
-    } catch (error) {
-      alert('Error: ' + error.message);
-    }
-  });
-</script>
-
+    <button type="submit" class="bg-blue-600 text-white p-2 rounded shadow">Submit Memory</button>
+  </form>
 
   <!-- Hidden Canvas -->
   <canvas id="canvas" class="hidden"></canvas>
 
+  <!-- JavaScript -->
   <script>
     const video = document.getElementById('video');
     const canvas = document.getElementById('canvas');
     const snapBtn = document.getElementById('snap');
     const preview = document.getElementById('preview');
     const overlayImg = document.getElementById('overlay');
+    const form = document.getElementById('souvenirForm');
+    const photoInput = document.getElementById('photoInput');
 
+    // Start camera
     async function initCamera() {
       try {
         const stream = await navigator.mediaDevices.getUserMedia({ video: true });
@@ -108,36 +67,63 @@
       }
     }
 
+    // Take snapshot and draw logo overlay
     function takeSnapshot() {
       const ctx = canvas.getContext('2d');
       canvas.width = video.videoWidth;
       canvas.height = video.videoHeight;
       ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-      if (overlayImg.complete) {
-        // Position logo in top-right corner
+      function drawOverlay() {
         const logoWidth = canvas.width * 0.2;
         const logoHeight = logoWidth;
         ctx.drawImage(overlayImg, canvas.width - logoWidth - 20, 20, logoWidth, logoHeight);
-        finish();
-      } else {
-        overlayImg.onload = () => {
-          const logoWidth = canvas.width * 0.2;
-          const logoHeight = logoWidth;
-          ctx.drawImage(overlayImg, canvas.width - logoWidth - 20, 20, logoWidth, logoHeight);
-          finish();
-        };
-      }
 
-      function finish() {
         const dataURL = canvas.toDataURL('image/png');
         preview.src = dataURL;
         preview.classList.remove('hidden');
         photoInput.value = dataURL;
       }
+
+      if (overlayImg.complete) {
+        drawOverlay();
+      } else {
+        overlayImg.onload = drawOverlay;
+      }
     }
 
     snapBtn.addEventListener('click', takeSnapshot);
+
+    // Submit form data to Google Apps Script
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const data = {
+        name: form.name.value,
+        country: form.country.value,
+        social: form.social.value,
+        word: form.word.value,
+        photo: photoInput.value
+      };
+
+      try {
+        const response = await fetch('https://script.google.com/macros/s/AKfycbxiRdaG4-vtUcJ_LD8A91HhTlnzl-qpKXCgmafAtHz4Oh_5bLRVk_k6zJguV90-ETLFPA/exec', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        });
+
+        const text = await response.text();
+        alert('Submitted: ' + text);
+        form.reset();
+        preview.classList.add('hidden');
+      } catch (error) {
+        alert('Error: ' + error.message);
+      }
+    });
+
     initCamera();
   </script>
 </body>
