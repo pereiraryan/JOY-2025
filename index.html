@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jubilee of Youth 2025 – Selfie Booth</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-slate-100 flex flex-col items-center p-6">
+  <h1 class="text-3xl font-bold mb-4 text-center text-amber-600">📸 Jubilee of Youth 2025 Selfie Booth</h1>
+
+  <!-- Camera & Overlay -->
+  <div class="relative w-80 rounded-2xl shadow-xl overflow-hidden">
+    <video id="video" class="rounded-2xl w-full" autoplay playsinline></video>
+    <!-- Shrunk and positioned logo -->
+    <img id="overlay" src="jubilee-logo.png" class="absolute top-2 right-2 w-20 h-20 opacity-80 pointer-events-none" alt="Logo overlay" />
+  </div>
+
+  <!-- Snapshot Button -->
+  <button id="snap" class="mt-4 bg-amber-500 hover:bg-amber-600 text-white font-semibold py-2 px-6 rounded-xl shadow">
+    📷 Take Photo
+  </button>
+
+  <!-- Captured Photo Preview -->
+  <img id="preview" class="mt-6 rounded-2xl shadow-xl hidden w-80 h-auto" alt="Your Jubilee selfie"/>
+
+  <!-- Form -->
+  <form id="souvenirForm" class="flex flex-col gap-3 mt-6">
+  <input name="name" type="text" placeholder="Your Name" required class="p-2 rounded border" />
+  
+  <select name="country" required class="p-2 rounded border">
+    <option value="">Select Your Country</option>
+    <option value="🇮🇳 India">🇮🇳 India</option>
+    <option value="🇮🇹 Italy">🇮🇹 Italy</option>
+    <option value="🇺🇸 USA">🇺🇸 USA</option>
+    <option value="🇵🇭 Philippines">🇵🇭 Philippines</option>
+  </select>
+
+  <input name="social" type="text" placeholder="Instagram or WhatsApp" class="p-2 rounded border" />
+
+  <input name="word" type="text" placeholder="A word in your language" required class="p-2 rounded border" />
+
+  <!-- Hidden input to store base64 selfie -->
+  <input type="hidden" name="photo" id="photoInput" />
+
+  <button type="submit" class="bg-blue-600 text-white p-2 rounded shadow">Submit Memory</button>
+</form>
+
+<script>
+  const form = document.getElementById('souvenirForm');
+  const photoInput = document.getElementById('photoInput');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const data = {
+      name: form.name.value,
+      country: form.country.value,
+      social: form.social.value,
+      word: form.word.value,
+      photo: photoInput.value // this comes from your camera
+    };
+
+    try {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbxiRdaG4-vtUcJ_LD8A91HhTlnzl-qpKXCgmafAtHz4Oh_5bLRVk_k6zJguV90-ETLFPA/exec', {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      const text = await response.text();
+      alert('Submitted: ' + text);
+      form.reset();
+    } catch (error) {
+      alert('Error: ' + error.message);
+    }
+  });
+</script>
+
+
+  <!-- Hidden Canvas -->
+  <canvas id="canvas" class="hidden"></canvas>
+
+  <script>
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
+    const snapBtn = document.getElementById('snap');
+    const preview = document.getElementById('preview');
+    const overlayImg = document.getElementById('overlay');
+
+    async function initCamera() {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        video.srcObject = stream;
+      } catch (err) {
+        alert('Camera access error: ' + err.message);
+      }
+    }
+
+    function takeSnapshot() {
+      const ctx = canvas.getContext('2d');
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+      if (overlayImg.complete) {
+        // Position logo in top-right corner
+        const logoWidth = canvas.width * 0.2;
+        const logoHeight = logoWidth;
+        ctx.drawImage(overlayImg, canvas.width - logoWidth - 20, 20, logoWidth, logoHeight);
+        finish();
+      } else {
+        overlayImg.onload = () => {
+          const logoWidth = canvas.width * 0.2;
+          const logoHeight = logoWidth;
+          ctx.drawImage(overlayImg, canvas.width - logoWidth - 20, 20, logoWidth, logoHeight);
+          finish();
+        };
+      }
+
+      function finish() {
+        const dataURL = canvas.toDataURL('image/png');
+        preview.src = dataURL;
+        preview.classList.remove('hidden');
+        photoInput.value = dataURL;
+      }
+    }
+
+    snapBtn.addEventListener('click', takeSnapshot);
+    initCamera();
+  </script>
+</body>
+</html>
