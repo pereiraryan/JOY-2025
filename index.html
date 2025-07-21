@@ -5,12 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Jubilee of Youth 2025 – Selfie Booth</title>
   <script src="https://cdn.tailwindcss.com"></script>
-<script>
-  const supabase = supabase.createClient(
-    'https://bqybakmwggpclhyzpwwv.supabase.co',
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJxeWJha213Z2dwY2xoeXpwd3d2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMwNTgxNzUsImV4cCI6MjA2ODYzNDE3NX0.2rfZYtsn_-ni8iTcpf1a5o9SGxuaKMsDH1NlQdJr2o0'
-  );
-</script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body class="min-h-screen bg-slate-100 flex flex-col items-center p-6">
   <h1 class="text-3xl font-bold mb-4 text-center text-amber-600">📸 Jubilee of Youth 2025 Selfie Booth</h1>
@@ -32,7 +27,6 @@
   <!-- Form -->
   <form id="souvenirForm" class="flex flex-col gap-3 mt-6">
     <input name="name" type="text" placeholder="Your Name" required class="p-2 rounded border" />
-
     <select name="country" required class="p-2 rounded border">
       <option value="">Select Your Country</option>
       <option value="🇮🇳 India">🇮🇳 India</option>
@@ -40,13 +34,9 @@
       <option value="🇺🇸 USA">🇺🇸 USA</option>
       <option value="🇵🇭 Philippines">🇵🇭 Philippines</option>
     </select>
-
     <input name="social" type="text" placeholder="Instagram or WhatsApp" class="p-2 rounded border" />
     <input name="word" type="text" placeholder="A word in your language" required class="p-2 rounded border" />
-
-    <!-- Hidden input to store base64 selfie -->
     <input type="hidden" name="photo" id="photoInput" />
-
     <button type="submit" class="bg-blue-600 text-white p-2 rounded shadow">Submit Memory</button>
   </form>
 
@@ -63,6 +53,13 @@
     const form = document.getElementById('souvenirForm');
     const photoInput = document.getElementById('photoInput');
 
+    // ✅ Supabase setup — use the global `supabasejs` object
+    const { createClient } = supabase;
+    const client = createClient(
+      'https://bqybakmwggpclhyzpwwv.supabase.co',
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJxeWJha213Z2dwY2xoeXpwd3d2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMwNTgxNzUsImV4cCI6MjA2ODYzNDE3NX0.2rfZYtsn_-ni8iTcpf1a5o9SGxuaKMsDH1NlQdJr2o0'
+    );
+
     // Start camera
     async function initCamera() {
       try {
@@ -73,7 +70,7 @@
       }
     }
 
-    // Take snapshot and draw logo overlay
+    // Take snapshot and draw overlay
     function takeSnapshot() {
       const ctx = canvas.getContext('2d');
       canvas.width = video.videoWidth;
@@ -100,7 +97,7 @@
 
     snapBtn.addEventListener('click', takeSnapshot);
 
-    // Submit form data to Google Apps Script
+    // Handle form submission
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
@@ -113,27 +110,20 @@
       };
 
       try {
-  const { error } = await supabase
-    .from('memories')
-    .insert([{
-      name: data.name,
-      country: data.country,
-      word: data.word,
-      social: data.social,
-      photo: data.photo
-    }]);
+        const { error } = await client
+          .from('memories')
+          .insert([data]);
 
-  if (error) {
-    alert('Submission failed: ' + error.message);
-  } else {
-    alert('Memory submitted successfully!');
-    form.reset();
-    preview.classList.add('hidden');
-  }
-} catch (error) {
-  alert('Unexpected error: ' + error.message);
-}
-
+        if (error) {
+          alert('Submission failed: ' + error.message);
+        } else {
+          alert('Memory submitted successfully!');
+          form.reset();
+          preview.classList.add('hidden');
+        }
+      } catch (err) {
+        alert('Unexpected error: ' + err.message);
+      }
     });
 
     initCamera();
