@@ -27,9 +27,203 @@
   <!-- Form -->
   <form id="souvenirForm" class="flex flex-col gap-3 mt-6">
     <input name="name" type="text" placeholder="Your Name" required class="p-2 rounded border" />
-    <select id="countrySelect" name="country" required class="p-2 rounded border">
-  <option value="">Select Your Country</option>
-</select>
+   <input name="country" list="countries" placeholder="Select your country" required class="p-2 rounded border" />
+<datalist id="countries">
+  <option value="🇦🇫 Afghanistan">
+  <option value="🇦🇱 Albania">
+  <option value="🇩🇿 Algeria">
+  <option value="🇦🇩 Andorra">
+  <option value="🇦🇴 Angola">
+  <option value="🇦🇬 Antigua and Barbuda">
+  <option value="🇦🇷 Argentina">
+  <option value="🇦🇲 Armenia">
+  <option value="🇦🇺 Australia">
+  <option value="🇦🇹 Austria">
+  <option value="🇦🇿 Azerbaijan">
+  <option value="🇧🇸 Bahamas">
+  <option value="🇧🇭 Bahrain">
+  <option value="🇧🇩 Bangladesh">
+  <option value="🇧🇧 Barbados">
+  <option value="🇧🇾 Belarus">
+  <option value="🇧🇪 Belgium">
+  <option value="🇧🇿 Belize">
+  <option value="🇧🇯 Benin">
+  <option value="🇧🇹 Bhutan">
+  <option value="🇧🇴 Bolivia">
+  <option value="🇧🇦 Bosnia and Herzegovina">
+  <option value="🇧🇼 Botswana">
+  <option value="🇧🇷 Brazil">
+  <option value="🇧🇳 Brunei">
+  <option value="🇧🇬 Bulgaria">
+  <option value="🇧🇫 Burkina Faso">
+  <option value="🇧🇮 Burundi">
+  <option value="🇰🇭 Cambodia">
+  <option value="🇨🇲 Cameroon">
+  <option value="🇨🇦 Canada">
+  <option value="🇨🇻 Cape Verde">
+  <option value="🇨🇫 Central African Republic">
+  <option value="🇹🇩 Chad">
+  <option value="🇨🇱 Chile">
+  <option value="🇨🇳 China">
+  <option value="🇨🇴 Colombia">
+  <option value="🇰🇲 Comoros">
+  <option value="🇨🇬 Congo (Brazzaville)">
+  <option value="🇨🇩 Congo (Kinshasa)">
+  <option value="🇨🇷 Costa Rica">
+  <option value="🇭🇷 Croatia">
+  <option value="🇨🇺 Cuba">
+  <option value="🇨🇾 Cyprus">
+  <option value="🇨🇿 Czech Republic">
+  <option value="🇩🇰 Denmark">
+  <option value="🇩🇯 Djibouti">
+  <option value="🇩🇲 Dominica">
+  <option value="🇩🇴 Dominican Republic">
+  <option value="🇪🇨 Ecuador">
+  <option value="🇪🇬 Egypt">
+  <option value="🇸🇻 El Salvador">
+  <option value="🇬🇶 Equatorial Guinea">
+  <option value="🇪🇷 Eritrea">
+  <option value="🇪🇪 Estonia">
+  <option value="🇸🇿 Eswatini">
+  <option value="🇪🇹 Ethiopia">
+  <option value="🇫🇯 Fiji">
+  <option value="🇫🇮 Finland">
+  <option value="🇫🇷 France">
+  <option value="🇬🇦 Gabon">
+  <option value="🇬🇲 Gambia">
+  <option value="🇬🇪 Georgia">
+  <option value="🇩🇪 Germany">
+  <option value="🇬🇭 Ghana">
+  <option value="🇬🇷 Greece">
+  <option value="🇬🇩 Grenada">
+  <option value="🇬🇹 Guatemala">
+  <option value="🇬🇳 Guinea">
+  <option value="🇬🇼 Guinea-Bissau">
+  <option value="🇬🇾 Guyana">
+  <option value="🇭🇹 Haiti">
+  <option value="🇭🇳 Honduras">
+  <option value="🇭🇺 Hungary">
+  <option value="🇮🇸 Iceland">
+  <option value="🇮🇳 India">
+  <option value="🇮🇩 Indonesia">
+  <option value="🇮🇷 Iran">
+  <option value="🇮🇶 Iraq">
+  <option value="🇮🇪 Ireland">
+  <option value="🇮🇱 Israel">
+  <option value="🇮🇹 Italy">
+  <option value="🇯🇲 Jamaica">
+  <option value="🇯🇵 Japan">
+  <option value="🇯🇴 Jordan">
+  <option value="🇰🇿 Kazakhstan">
+  <option value="🇰🇪 Kenya">
+  <option value="🇰🇮 Kiribati">
+  <option value="🇰🇼 Kuwait">
+  <option value="🇰🇬 Kyrgyzstan">
+  <option value="🇱🇦 Laos">
+  <option value="🇱🇻 Latvia">
+  <option value="🇱🇧 Lebanon">
+  <option value="🇱🇸 Lesotho">
+  <option value="🇱🇷 Liberia">
+  <option value="🇱🇾 Libya">
+  <option value="🇱🇹 Lithuania">
+  <option value="🇱🇺 Luxembourg">
+  <option value="🇲🇬 Madagascar">
+  <option value="🇲🇼 Malawi">
+  <option value="🇲🇾 Malaysia">
+  <option value="🇲🇻 Maldives">
+  <option value="🇲🇱 Mali">
+  <option value="🇲🇹 Malta">
+  <option value="🇲🇭 Marshall Islands">
+  <option value="🇲🇷 Mauritania">
+  <option value="🇲🇺 Mauritius">
+  <option value="🇲🇽 Mexico">
+  <option value="🇫🇲 Micronesia">
+  <option value="🇲🇩 Moldova">
+  <option value="🇲🇨 Monaco">
+  <option value="🇲🇳 Mongolia">
+  <option value="🇲🇪 Montenegro">
+  <option value="🇲🇦 Morocco">
+  <option value="🇲🇿 Mozambique">
+  <option value="🇲🇲 Myanmar">
+  <option value="🇳🇦 Namibia">
+  <option value="🇳🇷 Nauru">
+  <option value="🇳🇵 Nepal">
+  <option value="🇳🇱 Netherlands">
+  <option value="🇳🇿 New Zealand">
+  <option value="🇳🇮 Nicaragua">
+  <option value="🇳🇪 Niger">
+  <option value="🇳🇬 Nigeria">
+  <option value="🇰🇵 North Korea">
+  <option value="🇲🇰 North Macedonia">
+  <option value="🇳🇴 Norway">
+  <option value="🇴🇲 Oman">
+  <option value="🇵🇰 Pakistan">
+  <option value="🇵🇼 Palau">
+  <option value="🇵🇸 Palestine">
+  <option value="🇵🇦 Panama">
+  <option value="🇵🇬 Papua New Guinea">
+  <option value="🇵🇾 Paraguay">
+  <option value="🇵🇪 Peru">
+  <option value="🇵🇭 Philippines">
+  <option value="🇵🇱 Poland">
+  <option value="🇵🇹 Portugal">
+  <option value="🇶🇦 Qatar">
+  <option value="🇷🇴 Romania">
+  <option value="🇷🇺 Russia">
+  <option value="🇷🇼 Rwanda">
+  <option value="🇰🇳 Saint Kitts and Nevis">
+  <option value="🇱🇨 Saint Lucia">
+  <option value="🇻🇨 Saint Vincent and the Grenadines">
+  <option value="🇼🇸 Samoa">
+  <option value="🇸🇲 San Marino">
+  <option value="🇸🇹 Sao Tome and Principe">
+  <option value="🇸🇦 Saudi Arabia">
+  <option value="🇸🇳 Senegal">
+  <option value="🇷🇸 Serbia">
+  <option value="🇸🇨 Seychelles">
+  <option value="🇸🇱 Sierra Leone">
+  <option value="🇸🇬 Singapore">
+  <option value="🇸🇰 Slovakia">
+  <option value="🇸🇮 Slovenia">
+  <option value="🇸🇧 Solomon Islands">
+  <option value="🇸🇴 Somalia">
+  <option value="🇿🇦 South Africa">
+  <option value="🇰🇷 South Korea">
+  <option value="🇸🇸 South Sudan">
+  <option value="🇪🇸 Spain">
+  <option value="🇱🇰 Sri Lanka">
+  <option value="🇸🇩 Sudan">
+  <option value="🇸🇷 Suriname">
+  <option value="🇸🇪 Sweden">
+  <option value="🇨🇭 Switzerland">
+  <option value="🇸🇾 Syria">
+  <option value="🇹🇼 Taiwan">
+  <option value="🇹🇯 Tajikistan">
+  <option value="🇹🇿 Tanzania">
+  <option value="🇹🇭 Thailand">
+  <option value="🇹🇱 Timor-Leste">
+  <option value="🇹🇬 Togo">
+  <option value="🇹🇴 Tonga">
+  <option value="🇹🇹 Trinidad and Tobago">
+  <option value="🇹🇳 Tunisia">
+  <option value="🇹🇷 Turkey">
+  <option value="🇹🇲 Turkmenistan">
+  <option value="🇹🇻 Tuvalu">
+  <option value="🇺🇬 Uganda">
+  <option value="🇺🇦 Ukraine">
+  <option value="🇦🇪 United Arab Emirates">
+  <option value="🇬🇧 United Kingdom">
+  <option value="🇺🇸 United States">
+  <option value="🇺🇾 Uruguay">
+  <option value="🇺🇿 Uzbekistan">
+  <option value="🇻🇺 Vanuatu">
+  <option value="🇻🇪 Venezuela">
+  <option value="🇻🇳 Vietnam">
+  <option value="🇾🇪 Yemen">
+  <option value="🇿🇲 Zambia">
+  <option value="🇿🇼 Zimbabwe">
+</datalist>
+
     <input name="social" type="text" placeholder="Social ID" class="p-2 rounded border" />
     <input name="word" type="text" placeholder="A word in your language" required class="p-2 rounded border" />
     <input type="hidden" name="photo" id="photoInput" />
@@ -65,214 +259,7 @@
         alert('Camera access error: ' + err.message);
       }
     }
-const countries = [
-  { name: "Afghanistan", emoji: "🇦🇫" },
-  { name: "Albania", emoji: "🇦🇱" },
-  { name: "Algeria", emoji: "🇩🇿" },
-  { name: "Andorra", emoji: "🇦🇩" },
-  { name: "Angola", emoji: "🇦🇴" },
-  { name: "Antigua and Barbuda", emoji: "🇦🇬" },
-  { name: "Argentina", emoji: "🇦🇷" },
-  { name: "Armenia", emoji: "🇦🇲" },
-  { name: "Australia", emoji: "🇦🇺" },
-  { name: "Austria", emoji: "🇦🇹" },
-  { name: "Azerbaijan", emoji: "🇦🇿" },
-  { name: "Bahamas", emoji: "🇧🇸" },
-  { name: "Bahrain", emoji: "🇧🇭" },
-  { name: "Bangladesh", emoji: "🇧🇩" },
-  { name: "Barbados", emoji: "🇧🇧" },
-  { name: "Belarus", emoji: "🇧🇾" },
-  { name: "Belgium", emoji: "🇧🇪" },
-  { name: "Belize", emoji: "🇧🇿" },
-  { name: "Benin", emoji: "🇧🇯" },
-  { name: "Bhutan", emoji: "🇧🇹" },
-  { name: "Bolivia", emoji: "🇧🇴" },
-  { name: "Bosnia and Herzegovina", emoji: "🇧🇦" },
-  { name: "Botswana", emoji: "🇧🇼" },
-  { name: "Brazil", emoji: "🇧🇷" },
-  { name: "Brunei", emoji: "🇧🇳" },
-  { name: "Bulgaria", emoji: "🇧🇬" },
-  { name: "Burkina Faso", emoji: "🇧🇫" },
-  { name: "Burundi", emoji: "🇧🇮" },
-  { name: "Cabo Verde", emoji: "🇨🇻" },
-  { name: "Cambodia", emoji: "🇰🇭" },
-  { name: "Cameroon", emoji: "🇨🇲" },
-  { name: "Canada", emoji: "🇨🇦" },
-  { name: "Central African Republic", emoji: "🇨🇫" },
-  { name: "Chad", emoji: "🇹🇩" },
-  { name: "Chile", emoji: "🇨🇱" },
-  { name: "China", emoji: "🇨🇳" },
-  { name: "Colombia", emoji: "🇨🇴" },
-  { name: "Comoros", emoji: "🇰🇲" },
-  { name: "Congo (Congo-Brazzaville)", emoji: "🇨🇬" },
-  { name: "Costa Rica", emoji: "🇨🇷" },
-  { name: "Croatia", emoji: "🇭🇷" },
-  { name: "Cuba", emoji: "🇨🇺" },
-  { name: "Cyprus", emoji: "🇨🇾" },
-  { name: "Czech Republic", emoji: "🇨🇿" },
-  { name: "Democratic Republic of the Congo", emoji: "🇨🇩" },
-  { name: "Denmark", emoji: "🇩🇰" },
-  { name: "Djibouti", emoji: "🇩🇯" },
-  { name: "Dominica", emoji: "🇩🇲" },
-  { name: "Dominican Republic", emoji: "🇩🇴" },
-  { name: "Ecuador", emoji: "🇪🇨" },
-  { name: "Egypt", emoji: "🇪🇬" },
-  { name: "El Salvador", emoji: "🇸🇻" },
-  { name: "Equatorial Guinea", emoji: "🇬🇶" },
-  { name: "Eritrea", emoji: "🇪🇷" },
-  { name: "Estonia", emoji: "🇪🇪" },
-  { name: "Eswatini", emoji: "🇸🇿" },
-  { name: "Ethiopia", emoji: "🇪🇹" },
-  { name: "Fiji", emoji: "🇫🇯" },
-  { name: "Finland", emoji: "🇫🇮" },
-  { name: "France", emoji: "🇫🇷" },
-  { name: "Gabon", emoji: "🇬🇦" },
-  { name: "Gambia", emoji: "🇬🇲" },
-  { name: "Georgia", emoji: "🇬🇪" },
-  { name: "Germany", emoji: "🇩🇪" },
-  { name: "Ghana", emoji: "🇬🇭" },
-  { name: "Greece", emoji: "🇬🇷" },
-  { name: "Grenada", emoji: "🇬🇩" },
-  { name: "Guatemala", emoji: "🇬🇹" },
-  { name: "Guinea", emoji: "🇬🇳" },
-  { name: "Guinea-Bissau", emoji: "🇬🇼" },
-  { name: "Guyana", emoji: "🇬🇾" },
-  { name: "Haiti", emoji: "🇭🇹" },
-  { name: "Honduras", emoji: "🇭🇳" },
-  { name: "Hungary", emoji: "🇭🇺" },
-  { name: "Iceland", emoji: "🇮🇸" },
-  { name: "India", emoji: "🇮🇳" },
-  { name: "Indonesia", emoji: "🇮🇩" },
-  { name: "Iran", emoji: "🇮🇷" },
-  { name: "Iraq", emoji: "🇮🇶" },
-  { name: "Ireland", emoji: "🇮🇪" },
-  { name: "Israel", emoji: "🇮🇱" },
-  { name: "Italy", emoji: "🇮🇹" },
-  { name: "Ivory Coast", emoji: "🇨🇮" },
-  { name: "Jamaica", emoji: "🇯🇲" },
-  { name: "Japan", emoji: "🇯🇵" },
-  { name: "Jordan", emoji: "🇯🇴" },
-  { name: "Kazakhstan", emoji: "🇰🇿" },
-  { name: "Kenya", emoji: "🇰🇪" },
-  { name: "Kiribati", emoji: "🇰🇮" },
-  { name: "Kuwait", emoji: "🇰🇼" },
-  { name: "Kyrgyzstan", emoji: "🇰🇬" },
-  { name: "Laos", emoji: "🇱🇦" },
-  { name: "Latvia", emoji: "🇱🇻" },
-  { name: "Lebanon", emoji: "🇱🇧" },
-  { name: "Lesotho", emoji: "🇱🇸" },
-  { name: "Liberia", emoji: "🇱🇷" },
-  { name: "Libya", emoji: "🇱🇾" },
-  { name: "Liechtenstein", emoji: "🇱🇮" },
-  { name: "Lithuania", emoji: "🇱🇹" },
-  { name: "Luxembourg", emoji: "🇱🇺" },
-  { name: "Madagascar", emoji: "🇲🇬" },
-  { name: "Malawi", emoji: "🇲🇼" },
-  { name: "Malaysia", emoji: "🇲🇾" },
-  { name: "Maldives", emoji: "🇲🇻" },
-  { name: "Mali", emoji: "🇲🇱" },
-  { name: "Malta", emoji: "🇲🇹" },
-  { name: "Marshall Islands", emoji: "🇲🇭" },
-  { name: "Mauritania", emoji: "🇲🇷" },
-  { name: "Mauritius", emoji: "🇲🇺" },
-  { name: "Mexico", emoji: "🇲🇽" },
-  { name: "Micronesia", emoji: "🇫🇲" },
-  { name: "Moldova", emoji: "🇲🇩" },
-  { name: "Monaco", emoji: "🇲🇨" },
-  { name: "Mongolia", emoji: "🇲🇳" },
-  { name: "Montenegro", emoji: "🇲🇪" },
-  { name: "Morocco", emoji: "🇲🇦" },
-  { name: "Mozambique", emoji: "🇲🇿" },
-  { name: "Myanmar", emoji: "🇲🇲" },
-  { name: "Namibia", emoji: "🇳🇦" },
-  { name: "Nauru", emoji: "🇳🇷" },
-  { name: "Nepal", emoji: "🇳🇵" },
-  { name: "Netherlands", emoji: "🇳🇱" },
-  { name: "New Zealand", emoji: "🇳🇿" },
-  { name: "Nicaragua", emoji: "🇳🇮" },
-  { name: "Niger", emoji: "🇳🇪" },
-  { name: "Nigeria", emoji: "🇳🇬" },
-  { name: "North Korea", emoji: "🇰🇵" },
-  { name: "North Macedonia", emoji: "🇲🇰" },
-  { name: "Norway", emoji: "🇳🇴" },
-  { name: "Oman", emoji: "🇴🇲" },
-  { name: "Pakistan", emoji: "🇵🇰" },
-  { name: "Palau", emoji: "🇵🇼" },
-  { name: "Palestine", emoji: "🇵🇸" },
-  { name: "Panama", emoji: "🇵🇦" },
-  { name: "Papua New Guinea", emoji: "🇵🇬" },
-  { name: "Paraguay", emoji: "🇵🇾" },
-  { name: "Peru", emoji: "🇵🇪" },
-  { name: "Philippines", emoji: "🇵🇭" },
-  { name: "Poland", emoji: "🇵🇱" },
-  { name: "Portugal", emoji: "🇵🇹" },
-  { name: "Qatar", emoji: "🇶🇦" },
-  { name: "Romania", emoji: "🇷🇴" },
-  { name: "Russia", emoji: "🇷🇺" },
-  { name: "Rwanda", emoji: "🇷🇼" },
-  { name: "Saint Kitts and Nevis", emoji: "🇰🇳" },
-  { name: "Saint Lucia", emoji: "🇱🇨" },
-  { name: "Saint Vincent and the Grenadines", emoji: "🇻🇨" },
-  { name: "Samoa", emoji: "🇼🇸" },
-  { name: "San Marino", emoji: "🇸🇲" },
-  { name: "Sao Tome and Principe", emoji: "🇸🇹" },
-  { name: "Saudi Arabia", emoji: "🇸🇦" },
-  { name: "Senegal", emoji: "🇸🇳" },
-  { name: "Serbia", emoji: "🇷🇸" },
-  { name: "Seychelles", emoji: "🇸🇨" },
-  { name: "Sierra Leone", emoji: "🇸🇱" },
-  { name: "Singapore", emoji: "🇸🇬" },
-  { name: "Slovakia", emoji: "🇸🇰" },
-  { name: "Slovenia", emoji: "🇸🇮" },
-  { name: "Solomon Islands", emoji: "🇸🇧" },
-  { name: "Somalia", emoji: "🇸🇴" },
-  { name: "South Africa", emoji: "🇿🇦" },
-  { name: "South Korea", emoji: "🇰🇷" },
-  { name: "South Sudan", emoji: "🇸🇸" },
-  { name: "Spain", emoji: "🇪🇸" },
-  { name: "Sri Lanka", emoji: "🇱🇰" },
-  { name: "Sudan", emoji: "🇸🇩" },
-  { name: "Suriname", emoji: "🇸🇷" },
-  { name: "Sweden", emoji: "🇸🇪" },
-  { name: "Switzerland", emoji: "🇨🇭" },
-  { name: "Syria", emoji: "🇸🇾" },
-  { name: "Taiwan", emoji: "🇹🇼" },
-  { name: "Tajikistan", emoji: "🇹🇯" },
-  { name: "Tanzania", emoji: "🇹🇿" },
-  { name: "Thailand", emoji: "🇹🇭" },
-  { name: "Timor-Leste", emoji: "🇹🇱" },
-  { name: "Togo", emoji: "🇹🇬" },
-  { name: "Tonga", emoji: "🇹🇴" },
-  { name: "Trinidad and Tobago", emoji: "🇹🇹" },
-  { name: "Tunisia", emoji: "🇹🇳" },
-  { name: "Turkey", emoji: "🇹🇷" },
-  { name: "Turkmenistan", emoji: "🇹🇲" },
-  { name: "Tuvalu", emoji: "🇹🇻" },
-  { name: "Uganda", emoji: "🇺🇬" },
-  { name: "Ukraine", emoji: "🇺🇦" },
-  { name: "United Arab Emirates", emoji: "🇦🇪" },
-  { name: "United Kingdom", emoji: "🇬🇧" },
-  { name: "United States", emoji: "🇺🇸" },
-  { name: "Uruguay", emoji: "🇺🇾" },
-  { name: "Uzbekistan", emoji: "🇺🇿" },
-  { name: "Vanuatu", emoji: "🇻🇺" },
-  { name: "Vatican City", emoji: "🇻🇦" },
-  { name: "Venezuela", emoji: "🇻🇪" },
-  { name: "Vietnam", emoji: "🇻🇳" },
-  { name: "Yemen", emoji: "🇾🇪" },
-  { name: "Zambia", emoji: "🇿🇲" },
-  { name: "Zimbabwe", emoji: "🇿🇼" }
-];
 
- function populateCountryDropdown() {
-    const select = document.getElementById("countrySelect");
-    countries.forEach(c => {
-      const opt = document.createElement("option");
-      opt.value = `${c.emoji} ${c.name}`;
-      opt.textContent = `${c.emoji} ${c.name}`;
-      select.appendChild(opt);
-    });
-  }
 
     // Take snapshot and draw overlay
     function takeSnapshot() {
@@ -331,7 +318,7 @@ const countries = [
     });
 
     initCamera();
-populateCountryDropdown();
+
   </script>
 </body>
 </html>
